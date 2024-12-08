@@ -18,8 +18,8 @@ public class ViewRecipesActivity extends AppCompatActivity {
     private RadioGroup filterCategoryRadioGroup;
     private Button resetFilterButton;
 
-    private List<String> recipeNames = new ArrayList<>(); // Complete list of recipes
-    private List<String> filteredRecipes = new ArrayList<>(); // Displayed list
+    private List<String> recipeNames = new ArrayList<>(); 
+    private List<String> filteredRecipes = new ArrayList<>(); 
     private SharedPreferences preferences;
 
     @Override
@@ -31,21 +31,21 @@ public class ViewRecipesActivity extends AppCompatActivity {
         filterCategoryRadioGroup = findViewById(R.id.filter_category_radio_group);
         resetFilterButton = findViewById(R.id.reset_filter_button);
 
-        // Load recipes from SharedPreferences
+        
         preferences = getSharedPreferences("recipes", MODE_PRIVATE);
         Map<String, ?> allRecipes = preferences.getAll();
         recipeNames = new ArrayList<>(allRecipes.keySet());
-        filteredRecipes.addAll(recipeNames); // Show all recipes by default
+        filteredRecipes.addAll(recipeNames); 
 
-        // Set up RecyclerView
+       
         recipeAdapter = new RecipeAdapter(this, filteredRecipes, preferences);
         recipesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         recipesRecyclerView.setAdapter(recipeAdapter);
 
-        // Handle category filter
+       
         filterCategoryRadioGroup.setOnCheckedChangeListener((group, checkedId) -> filterRecipesByCategory(checkedId));
 
-        // Reset Filter Button
+        
         resetFilterButton.setOnClickListener(v -> resetFilter());
     }
 
@@ -53,12 +53,12 @@ public class ViewRecipesActivity extends AppCompatActivity {
         filteredRecipes.clear();
 
         if (checkedId == -1) {
-            // No filter, show all recipes
+            
             filteredRecipes.addAll(recipeNames);
         } else {
             String selectedCategory = "";
 
-            // Determine selected category
+            
             if (checkedId == R.id.filter_starter) {
                 selectedCategory = "Entrée";
             } else if (checkedId == R.id.filter_main) {
@@ -67,7 +67,7 @@ public class ViewRecipesActivity extends AppCompatActivity {
                 selectedCategory = "Dessert";
             }
 
-            // Filter recipes based on category
+            
             for (String recipeName : recipeNames) {
                 String recipeData = preferences.getString(recipeName, null);
                 if (recipeData != null) {
@@ -79,19 +79,19 @@ public class ViewRecipesActivity extends AppCompatActivity {
             }
         }
 
-        // Notify adapter to update RecyclerView
+       
         recipeAdapter.notifyDataSetChanged();
     }
 
     private void resetFilter() {
-        // Clear RadioGroup selection
+        
         filterCategoryRadioGroup.clearCheck();
 
-        // Show all recipes
+        
         filteredRecipes.clear();
         filteredRecipes.addAll(recipeNames);
 
-        // Notify adapter to update RecyclerView
+        
         recipeAdapter.notifyDataSetChanged();
     }
 }
