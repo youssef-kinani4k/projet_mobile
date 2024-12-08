@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         Button addRecipeButton = findViewById(R.id.add_recipe_button);
         Button viewRecipesButton = findViewById(R.id.view_recipes_button);
 
-        // Navigate to Add Recipe Activity
+       
         addRecipeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Navigate to View Recipes Activity
+        
         viewRecipesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
