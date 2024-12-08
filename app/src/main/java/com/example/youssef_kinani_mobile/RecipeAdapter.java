@@ -38,19 +38,19 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         String recipeName = recipeNames.get(position);
         holder.recipeTitle.setText(recipeName);
 
-        // Get recipe data from SharedPreferences
+        
         String recipeData = preferences.getString(recipeName, null);
         if (recipeData != null) {
             String[] parts = recipeData.split("\\|");
             if (parts.length > 4 && !parts[4].isEmpty()) {
                 Uri imageUri = Uri.parse(parts[4]);
-                holder.recipeImage.setImageResource(R.drawable.chabakiya); // Load image from URI
+                holder.recipeImage.setImageResource(R.drawable.chabakiya); 
             } else {
-                holder.recipeImage.setImageResource(android.R.drawable.ic_menu_gallery); // Default image
+                holder.recipeImage.setImageResource(android.R.drawable.ic_menu_gallery); 
             }
         }
 
-        // Handle "Details" button click
+       
         holder.detailsButton.setOnClickListener(v -> {
             Intent intent = new Intent(context, RecipeDetailsActivity.class);
             intent.putExtra("recipeName", recipeName);
