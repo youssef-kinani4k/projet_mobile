@@ -49,7 +49,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
 
             if (parts.length > 4 ) {
-                //Uri imageUri = Uri.parse(parts[4]);
+                
                 recipeImage.setImageResource(R.drawable.chabakiya);
                 recipeImage.setVisibility(View.VISIBLE);
             } else {
@@ -57,7 +57,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         }
 
-        // Delete button functionality
+        
         deleteButton.setOnClickListener(v -> {
             SharedPreferences.Editor editor = preferences.edit();
             editor.remove(recipeName);
@@ -67,10 +67,10 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             finish();
         });
 
-        // Edit button functionality
+       
         editButton.setOnClickListener(v -> {
             Intent intent = new Intent(RecipeDetailsActivity.this, EditRecipeActivity.class);
-            intent.putExtra("recipeName", recipeName); // Pass the recipe name to EditRecipeActivity
+            intent.putExtra("recipeName", recipeName); 
             startActivity(intent);
         });
     }
