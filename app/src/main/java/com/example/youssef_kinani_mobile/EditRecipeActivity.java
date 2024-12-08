@@ -22,14 +22,14 @@ public class EditRecipeActivity extends AppCompatActivity {
     private Uri selectedImageUri;
     private String originalRecipeName;
 
-    // Image picker result launcher
+    
     ActivityResultLauncher<Intent> imagePicker = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    // Get the selected image URI
+                   
                     selectedImageUri = result.getData().getData();
-                    recipeImagePreview.setImageURI(selectedImageUri); // Set the image preview
+                    recipeImagePreview.setImageURI(selectedImageUri); 
                 }
             });
 
@@ -47,23 +47,23 @@ public class EditRecipeActivity extends AppCompatActivity {
         Button selectImageButton = findViewById(R.id.select_image_button);
         Button deleteImageButton = findViewById(R.id.delete_image_button);
 
-        // Get the recipe name from the previous activity
+        
         Intent intent = getIntent();
         originalRecipeName = intent.getStringExtra("recipeName");
 
-        // Get the existing recipe data from SharedPreferences
+        
         SharedPreferences preferences = getSharedPreferences("recipes", MODE_PRIVATE);
         String recipeData = preferences.getString(originalRecipeName, null);
 
         if (recipeData != null) {
             String[] parts = recipeData.split("\\|");
 
-            // Populate the fields with existing recipe data
+            
             recipeNameInput.setText(parts[0]);
             ingredientsInput.setText(parts[1]);
             stepsInput.setText(parts[2]);
 
-            // Pre-select category
+            
             if (parts.length > 3) {
                 String category = parts[3];
                 if (category.equals("Entrée")) {
@@ -75,23 +75,23 @@ public class EditRecipeActivity extends AppCompatActivity {
                 }
             }
 
-            // Display the current image if available
+            
             if (parts.length > 4) {
-                //selectedImageUri = Uri.parse(parts[4]);
+               
                 recipeImagePreview.setImageResource(R.drawable.chabakiya);
             }
         }
 
-        // Image selection button (Gallery or Camera)
+        
         selectImageButton.setOnClickListener(v -> {
             Intent imageIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            imagePicker.launch(imageIntent); // Launch the image picker
+            imagePicker.launch(imageIntent); 
         });
 
-        // Save changes button
+        
         saveChangesButton.setOnClickListener(v -> saveChanges());
 
-        // Delete image button
+        
         deleteImageButton.setOnClickListener(v -> deleteImage());
     }
 
@@ -100,7 +100,7 @@ public class EditRecipeActivity extends AppCompatActivity {
         String newIngredients = ingredientsInput.getText().toString();
         String newSteps = stepsInput.getText().toString();
 
-        // Get selected category
+        
         int selectedCategoryId = categoryRadioGroup.getCheckedRadioButtonId();
         if (selectedCategoryId == -1) {
             Toast.makeText(this, "Veuillez sélectionner une catégorie!", Toast.LENGTH_SHORT).show();
@@ -115,34 +115,34 @@ public class EditRecipeActivity extends AppCompatActivity {
             return;
         }
 
-        // Save updated data to SharedPreferences
+        
         SharedPreferences preferences = getSharedPreferences("recipes", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        // Remove old recipe if name has changed
+       
         if (!originalRecipeName.equals(newName)) {
             editor.remove(originalRecipeName);
         }
 
-        // Save updated recipe data (including the image URI)
+        
         String updatedRecipeData = newName + "|" + newIngredients + "|" + newSteps + "|" + newCategory + "|" + (selectedImageUri != null ? selectedImageUri.toString() : "");
         editor.putString(newName, updatedRecipeData);
         editor.apply();
 
         Toast.makeText(this, "Modifications enregistrées avec succès!", Toast.LENGTH_SHORT).show();
 
-        // Set the result and return the data to the main activity
+        
         Intent resultIntent = new Intent();
         resultIntent.putExtra("updatedRecipeName", newName);
         setResult(RESULT_OK, resultIntent);
-        finish(); // Close the activity and return to the previous one
+        finish();
     }
 
     private void deleteImage() {
         selectedImageUri = null;
-        recipeImagePreview.setImageResource(android.R.drawable.ic_menu_gallery); // Set a default placeholder image
+        recipeImagePreview.setImageResource(android.R.drawable.ic_menu_gallery); 
 
-        // Save the updated data without the image URI
+        
         SharedPreferences preferences = getSharedPreferences("recipes", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
@@ -153,7 +153,7 @@ public class EditRecipeActivity extends AppCompatActivity {
         RadioButton selectedCategory = findViewById(selectedCategoryId);
         String newCategory = selectedCategory.getText().toString();
 
-        // Update the data, removing the image URI
+        
         String updatedRecipeData = newName + "|" + newIngredients + "|" + newSteps + "|" + newCategory + "|";
         editor.putString(newName, updatedRecipeData);
         editor.apply();
