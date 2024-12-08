@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp"
+android:gravity="center"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="226dp"
+        app:srcCompat="@drawable/accu" />
+
+    <TextView
+        android:id="@+id/welcome_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Bienvenue dans l'application de gestion de recettes!"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/add_recipe_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Ajouter une recette" />
+
+    <Button
+        android:id="@+id/view_recipes_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Consulter les recettes existantes" />
+
+</LinearLayout>
+
+

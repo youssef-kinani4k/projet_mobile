@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="@android:color/white"
+    android:layout_marginBottom="8dp"
+    android:elevation="4dp"
+    android:layout_marginTop="10dp"
+    >
+
+    <!-- Image for Recipe -->
+    <ImageView
+        android:id="@+id/recipe_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Recipe Image" />
+
+    <!-- Recipe Title -->
+    <TextView
+        android:id="@+id/recipe_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:padding="8dp" />
+
+    <!-- Details Button -->
+    <Button
+        android:id="@+id/details_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Détails" />
+</LinearLayout>

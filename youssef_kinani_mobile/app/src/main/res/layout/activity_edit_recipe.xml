@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:weightSum="1"
+    >
+
+    <ImageView
+        android:id="@+id/recipe_image_preview"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Recipe Image"
+        android:layout_gravity="center"  />
+    <Button
+        android:id="@+id/delete_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Supprimer l'image"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/recipe_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="Nom de la recette" />
+
+    <EditText
+        android:id="@+id/ingredients_input"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="Ingrédients"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/steps_input"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:hint="Étapes de préparation"
+        android:inputType="textMultiLine" />
+
+    <!-- RadioGroup for selecting recipe category -->
+    <RadioGroup
+        android:id="@+id/category_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/category_starter"
+            android:layout_width="110dp"
+            android:layout_height="72dp"
+            android:text="Entrée" />
+
+        <RadioButton
+            android:id="@+id/category_main"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:text="Plat principal" />
+
+        <RadioButton
+            android:id="@+id/category_dessert"
+            android:layout_width="120dp"
+            android:layout_height="72dp"
+            android:text="Dessert" />
+    </RadioGroup>
+
+    <!-- ImageView for Recipe Image -->
+
+    <!-- Button to Open Image Picker -->
+
+    <Button
+        android:id="@+id/select_image_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sélectionner une image"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/save_recipe_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sauvegarder"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
